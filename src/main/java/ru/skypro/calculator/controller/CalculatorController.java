@@ -1,6 +1,6 @@
 package ru.skypro.calculator.controller;
 
-
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,25 +23,25 @@ public class CalculatorController {
         return "Добро пожаловать в калькулятор";
     }
     @GetMapping("/plus")
-    public String sum(@ReqestParam int num1, @ReqestParam int num2) {
+    public String sum(@RequestParam int num1, int num2) {
         int result = calculatorService.sum(num1, num2);
         return createRs(num1, num2, '+', result);
     }
 
     @GetMapping("/minus")
-    public String subtract(@ReqestParam int num1, @ReqestParam int num2) {
+    public String subtract(@RequestParam int num1, int num2) {
         int result = calculatorService.subtract(num1, num2);
         return createRs(num1, num2, '-', result);
     }
 
     @GetMapping("/multiply")
-    public String multiply(@ReqestParam int num1, @ReqestParam int num2) {
+    public String multiply(@RequestParam int num1, int num2) {
         int result = calculatorService.multiply(num1, num2);
         return createRs(num1, num2, '*', result);
     }
 
     @GetMapping("/divide")
-    public String divide(@ReqestParam int num1, @ReqestParam int num2) {
+    public String divide(@RequestParam int num1, int num2) {
         if (num2 != 0) {
             int result = calculatorService.divide(num1, num2);
             return createRs(num1, num2, '/', result);
